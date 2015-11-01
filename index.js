@@ -1,23 +1,35 @@
 var fs = require("fs-extra");
-// var path = require("path");
-
-var path = './.git/refs/tags';
 
 // watch tags directory for a new one
+var path = './.git/refs/tags';
 fs.watch(path, getNewVersion);
 
 function getNewVersion(event,file){
-  console.log('event is: ' + event);
+  // check if start with a v
   if (file) {
-    var newVersion = file.split("v");
-    readPackage(newVersion[1]);
+    console.log("file: ", file);
+    var substr = "v";
+    if(file.indexOf(substr) > -1){
+      // is a tag version name
+      var newVersion = file.split("v");
+      console.log("newVersion[1]: ", newVersion[1]);
+      // check if newVersion has numbers
+      if(newVersion[1].match(/^[0-9.]+$/) != null){
+         // contains a number, is a valid version tag
+         readPackage(newVersion[1]);
+      } else{
+         // does not contain a number, do nothing
+      }
+    }else{
+      // isn't a tag version name, do nothing
+    }
   } else {
     console.log('filename not provided');
   }
 }
 
 function readPackage(version){
-
+  console.log("act!");
   fs.readJson('./package.json', function(err, packageObj) {
     if(err) {
       console.log("Error: ", "Please check read file permissions. Try: sudo chmod 777 package.json");
@@ -34,6 +46,4 @@ function readPackage(version){
       });
     }
   });
-
-
 }
