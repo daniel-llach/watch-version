@@ -1,6 +1,6 @@
 {
   "name": "watchv",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "An update package version fire with git tag command",
   "repository": {
     "type": "git",
@@ -8,18 +8,18 @@
   },
   "main": "index.js",
   "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-      "watch",
-      "version",
-      "github",
-      "tag"
+    "watch",
+    "version",
+    "github",
+    "tag"
   ],
   "author": "daniel llach",
   "license": "MIT",
   "dependencies": {
-      "fs": "0.0.2",
-      "fs-extra": "^0.26.0"
+    "fs": "0.0.2",
+    "fs-extra": "^0.26.0"
   }
 }
