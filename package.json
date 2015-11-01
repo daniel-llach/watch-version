@@ -1,0 +1,21 @@
+{
+  "name": "watchv",
+  "version": "0.2.1",
+  "description": "An update version module from git tag command",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "watch",
+    "version",
+    "github",
+    "tag"
+  ],
+  "author": "daniel llach",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "0.0.2",
+    "fs-extra": "^0.26.0"
+  }
+}
