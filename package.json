@@ -1,6 +1,6 @@
 {
-  "name": "watchv",
-  "version": "1.1.0",
+  "name": "watch-version",
+  "version": "1.1.1",
   "description": "An update package version fire with git tag command",
   "repository": {
     "type": "git",
@@ -16,10 +16,19 @@
     "github",
     "tag"
   ],
-  "author": "daniel llach",
+  "author": {
+    "name": "Daniel LLach",
+    "email": "daniel.llach@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
+    "colors": "^1.1.2",
     "fs": "0.0.2",
     "fs-extra": "^0.26.0"
-  }
+  },
+  "preferGlobal": true,
+  "bin": {
+    "watch-version": "bin/watch-version"
+  },
+  "readmeFilename": "Readme.md"
 }
