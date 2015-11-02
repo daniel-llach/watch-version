@@ -1,8 +1,12 @@
+#!/usr/bin/env node
+
 var fs = require("fs-extra");
+var path = require("path");
+var colors = require('colors');
 
 // watch tags directory for a new one
-var path = './.git/refs/tags';
-fs.watch(path, getNewVersion);
+var pathTags = path.join(__dirname, '.git/refs/tags');
+fs.watch( pathTags , getNewVersion);
 
 function getNewVersion(event,file){
   // check if start with a v
@@ -12,7 +16,6 @@ function getNewVersion(event,file){
     if(file.indexOf(substr) > -1){
       // is a tag version name
       var newVersion = file.split("v");
-      console.log("newVersion[1]: ", newVersion[1]);
       // check if newVersion has numbers
       if(newVersion[1].match(/^[0-9.]+$/) != null){
          // contains a number, is a valid version tag
@@ -29,19 +32,19 @@ function getNewVersion(event,file){
 }
 
 function readPackage(version){
-  console.log("act!");
-  fs.readJson('./package.json', function(err, packageObj) {
+  var pkg = path.join(__dirname, 'package.json');
+  fs.readJson(pkg, function(err, pkgObj) {
     if(err) {
-      console.log("Error: ", "Please check read file permissions. Try: sudo chmod 777 package.json");
+      console.log("Error: ", "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
     }else{
       // set version
-      packageObj.version = version;
+      pkgObj.version = version;
       // write new package object
-      fs.writeJson('./package.json', packageObj, function(err){
+      fs.writeJson('./package.json', pkgObj, function(err){
         if(err) {
-          console.log("Error: ", "Please check write file permissions. Try: sudo chmod 777 package.json");
+          console.log("Error: ", "Please check write file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
         }else{
-          console.log(packageObj.name + " update to version " + packageObj.version);
+          console.log(pkgObj.name + " package.json update to version " + pkgObj.version.green);
         }
       });
     }
