@@ -1,6 +1,6 @@
 {
   "name": "watch-version",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "description": "An update package version fire with git tag command",
   "repository": {
     "type": "git",
@@ -28,7 +28,7 @@
   },
   "preferGlobal": true,
   "bin": {
-    "watch-version": "./bin/watch-version.js"
+    "watch-version": "index.js"
   },
   "readmeFilename": "Readme.md"
 }
