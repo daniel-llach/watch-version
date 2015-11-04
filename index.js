@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
 var fs = require("fs-extra");
-var path = require("path");
 var colors = require('colors');
 
 // watch tags directory for a new one
-var pathTags = path.join(__dirname, '.git/refs/tags');
+var pathTags = '.git/refs/tags';
 fs.watch( pathTags , getNewVersion);
 
 function getNewVersion(event,file){
@@ -33,7 +32,7 @@ function getNewVersion(event,file){
 }
 
 function readPackage(version){
-  var pkg = path.join(__dirname, 'package.json');
+  var pkg = 'package.json';
   fs.readJson(pkg, function(err, pkgObj) {
     if(err) {
       console.log("Error: ", "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
