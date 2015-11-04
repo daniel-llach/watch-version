@@ -8,10 +8,8 @@ var pathTags = '.git/refs/tags';
 fs.watch( pathTags , getNewVersion);
 
 function getNewVersion(event,file){
-  console.log("event: ", event);
   // check if start with a v
   if (file) {
-    console.log("file: ", file);
     var substr = "v";
     if(file.indexOf(substr) > -1){
       // is a tag version name
