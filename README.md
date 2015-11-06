@@ -12,7 +12,7 @@ This module can automatically update the version of your node app ( or API) when
 ### Use
 1.- Standing in the path thats contains the **.git** folder and your **package.json** file and change its permissions:
 ```
-  sudo chmod 777 package.json to permission stuff before run watch-version
+  sudo chmod 777 package.json
 ```
 
 2.- Run whatch-version:
