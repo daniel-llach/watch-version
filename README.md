@@ -40,7 +40,7 @@ First of all , I must say that there are several classifications of versioning.
 
 The nomenclature used in NPM versioning is called semantic versioning, the following image shows what they work:
 
-![alt tag](https://raw.github.com/daniel-llach/watch-version/img/versioning.jpg)
+![alt tag](https://raw.githubusercontent.com/daniel-llach/watch-version/master/img/versioning.jpg)
 
 As you can see, the last digit increases when you make backwards-compatible bug fixes, the middle digit increase when you add functionality in a backwards-compatible manner and the first digit increase when you make incompatible API changes.
 
