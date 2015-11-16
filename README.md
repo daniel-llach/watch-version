@@ -14,6 +14,7 @@ This module can automatically update the version of your node app ( or API) when
 ```
   sudo chmod 777 package.json
 ```
+**_You must realize this operation every time that you do a pull, because GITHUB only support 2 filemodes 644 and 755... it's a shame._**
 
 2.- Run whatch-version:
 ```
