@@ -3,6 +3,9 @@
 var fs = require("fs-extra");
 var colors = require('colors');
 
+// Starting
+startWatch();
+
 // watch tags directory for a new one
 var pathTags = '.git/refs/tags';
 fs.watch( pathTags , getNewVersion);
@@ -45,6 +48,17 @@ function readPackage(version){
           console.log(pkgObj.name + " package.json update to version " + pkgObj.version.green);
         }
       });
+    }
+  });
+}
+
+function startWatch(){
+  var pkg = 'package.json';
+  fs.readJson(pkg, function(err, pkgObj) {
+    if(err) {
+      console.log("Error: ", "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
+    }else{
+      console.log("Starting to watch ".gray + pkgObj.name.blue + " project...".gray);
     }
   });
 }
