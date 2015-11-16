@@ -1,6 +1,6 @@
 {
   "name": "watch-version",
-  "version": "1.1.12",
+  "version": "1.1.13",
   "description": "An update package version fire with git tag command",
   "repository": {
     "type": "git",
