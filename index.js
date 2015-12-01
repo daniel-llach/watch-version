@@ -36,14 +36,14 @@ function readPackage(version){
   var pkg = 'package.json';
   fs.readJson(pkg, function(err, pkgObj) {
     if(err) {
-      console.log("Error: ", "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
+      console.log("Error: ".red, "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions".gray);
     }else{
       // set version
       pkgObj.version = version;
       // write new package object
       fs.writeJson('./package.json', pkgObj, function(err){
         if(err) {
-          console.log("Error: ", "Please check write file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
+          console.log("Error: ".red, "Please check write file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions".gray);
         }else{
           console.log(pkgObj.name + " package.json update to version " + pkgObj.version.green);
         }
@@ -54,11 +54,24 @@ function readPackage(version){
 
 function startWatch(){
   var pkg = 'package.json';
-  fs.readJson(pkg, function(err, pkgObj) {
-    if(err) {
-      console.log("Error: ", "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions");
-    }else{
-      console.log("Starting to watch ".gray + pkgObj.name.blue + " project...".gray);
+  // there is a package?
+  fs.stat(pkg, function(err, stat) {
+    if(err == null) {
+        // yes!
+        fs.readJson(pkg, function(err, pkgObj) {
+          if(err) {
+            console.log("Error: ".red, "Please check read file permissions, try: sudo chmod 777 package.json and fix npm permission too: https://docs.npmjs.com/getting-started/fixing-npm-permissions".gray);
+          }else{
+            console.log("Starting to watch ".gray + pkgObj.name.blue + " project...".gray);
+          }
+        });
+    } else if(err.code == 'ENOENT') {
+      // no!
+      console.log("Error: ".red, "You don't have any package.json !! ".gray);
+      console.log("Please create your".gray + " package.json".yellow);
+    } else {
+        console.log('Some other error: ', err.code);
     }
   });
+
 }

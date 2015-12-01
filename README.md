@@ -18,7 +18,7 @@ This module can automatically update the version of your node app ( or API) when
 
 2.- Run whatch-version:
 ```
-  whatch-version
+  watch-version
 ```
 
 3.- In another tab add a github tag conventionally, as explained in github documentation
